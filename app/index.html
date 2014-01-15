@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+  	<title>RemoteControl</title>
+  	<link rel="stylesheet" href="css/bootstrap.css">
+  	<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+  	<h1>Let's build a Remote Control for an Audio Player</h1>
+
+  	<div id="player" ng-app="playerApp" ng-controller="playerCtrl">
+
+  		<div id="controls">
+  			<span>Previous</span> |
+  			<span>Play</span> |
+  			<span>Pause</span> |
+  			<span>Stop</span> |
+  			<span>Next</span>
+  		</div>
+
+  		<div id="progress-indicator">
+  			<span class="ctrl">================[]=======</span> | 
+  			<span class="time">01:45</span>
+  		</div>
+
+  		<div id="volume">
+  			<span class="ctrl">================[]=======</span> |
+  			<span class="mute">Mute</span>
+  		</div>
+  	
+	  	<div id="playlist">
+        <p ng-model="test">{{test}}</p>
+				<ul class="tracks">
+					<li ng-repeat="track in tracks">
+						<span class="artist">{{track.artist}}</span> - <span class="title">{{track.title}}</span>
+					</li>
+				</ul>
+	  	</div>
+
+  	</div>
+
+  	<script src="lib/angular.js"></script>
+  	<script src="lib/jquery-1.10.2.min.js"></script>
+  	<script src="lib/bootstrap.js"></script>
+  	<script src="lib/lodash.js"></script>
+	  <script src="js/player-app/app.js"></script>
+	  <script src="js/player-app/controllers.js"></script>  	
+  </body>
+</html>
+
