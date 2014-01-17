@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var playerApp = angular.module('playerApp', ['playerControllers'])
-	.controller('testCtrl', function ($scope) {
-		$scope.test = "knock knock";
-	});
+var playerApp = angular.module('playerApp', [
+	'ui.bootstrap',
+	'playerControllers'
+]);

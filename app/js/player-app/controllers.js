@@ -9,5 +9,4 @@ playerControllers.controller('playerCtrl', ['$scope', '$http',
     $http.get('data/tracks.json').success(function(data) {
       $scope.tracks = data;
     });
-    $scope.test = "anybody out there?";
   }]);

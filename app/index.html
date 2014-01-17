@@ -10,11 +10,9 @@
 
   	<div id="player" ng-app="playerApp" ng-controller="playerCtrl">
 
-  		<div id="controls">
+  		<div id="player-controls">
   			<span>Previous</span> |
-  			<span>Play</span> |
-  			<span>Pause</span> |
-  			<span>Stop</span> |
+  			<span>Play/Pause</span> |
   			<span>Next</span>
   		</div>
 
@@ -29,7 +27,11 @@
   		</div>
   	
 	  	<div id="playlist">
-        <p ng-model="test">{{test}}</p>
+        <div id="playlist-controls">
+          <span>Shuffle</span>
+          <span>Repeat</span>
+          <span>Empty</span>
+        </div>
 				<ul class="tracks">
 					<li ng-repeat="track in tracks">
 						<span class="artist">{{track.artist}}</span> - <span class="title">{{track.title}}</span>
@@ -37,12 +39,14 @@
 				</ul>
 	  	</div>
 
-  	</div>
+  	</div><!-- #player -->
 
-  	<script src="lib/angular.js"></script>
-  	<script src="lib/jquery-1.10.2.min.js"></script>
-  	<script src="lib/bootstrap.js"></script>
+    <div id="browser"></div>
+
   	<script src="lib/lodash.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.10.0.js"></script>
+  	
 	  <script src="js/player-app/app.js"></script>
 	  <script src="js/player-app/controllers.js"></script>  	
   </body>
