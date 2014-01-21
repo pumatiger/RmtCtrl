@@ -1,21 +1,27 @@
 [
     {
         "artist": "Gnarls Barkley", 
-        "title": "Crazy"
+        "title": "Crazy",
+        "uri": "file:///C:/Users/emsone/Documents/Work/voxelbrain/RmtCtrl/app/data/Gnarls Barkley - Crazy [from the basement].mp3"
     },{
         "artist": "Chet Faker", 
-        "title": "Archangel"
+        "title": "Archangel",
+        "uri": "file:///C:/Users/emsone/Documents/Work/voxelbrain/RmtCtrl/app/data/01 Archangel.mp3"
     },{
         "artist": "Brightblack Morning Light", 
-        "title": "Hologram Buffalo"
+        "title": "Hologram Buffalo",
+        "uri": "file:///C:/Users/emsone/Documents/Work/voxelbrain/RmtCtrl/app/data/Brightblack Morning Light - Hologram Buffalo.mp3"
     },{
         "artist": "Jichael Mackson", 
-        "title": "Gedöns"
+        "title": "Gedöns",
+        "uri": "file:///C:/Users/emsone/Documents/Work/voxelbrain/RmtCtrl/app/data/JICHAEL MACKSON - A_Gedöns.mp3"
     },{
         "artist": "Mazzy Star", 
-        "title": "Into Dust"
+        "title": "Into Dust",
+        "uri": "file:///C:/Users/emsone/Documents/Work/voxelbrain/RmtCtrl/app/data/Mazzy Star - Into Dust.mp3"
     },{
         "artist": "Moderat", 
-        "title": "Rusty Nails"
+        "title": "Rusty Nails",
+        "uri": "file:///C:/Users/emsone/Documents/Work/voxelbrain/RmtCtrl/app/data/Moderat - Rusty Nails.mp3"
     }
 ]

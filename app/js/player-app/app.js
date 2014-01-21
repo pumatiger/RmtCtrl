@@ -3,6 +3,8 @@
 /* App Module */
 
 var playerApp = angular.module('playerApp', [
-	'ui.bootstrap',
-	'playerControllers'
+    'ui.bootstrap',
+    'playerControllers',
+    'playerServices',
+    'playerFilters'
 ]);

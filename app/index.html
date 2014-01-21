@@ -5,10 +5,10 @@
   	<link rel="stylesheet" href="css/bootstrap.css">
   	<link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body ng-app="playerApp" ng-controller="playerCtrl">
   	<h1>Let's build a Remote Control for an Audio Player</h1>
 
-  	<div id="player" ng-app="playerApp" ng-controller="playerCtrl">
+  	<div id="player">
 
   		<div id="player-controls">
   			<span>Previous</span> |
@@ -28,27 +28,43 @@
   	
 	  	<div id="playlist">
         <div id="playlist-controls">
-          <span>Shuffle</span>
-          <span>Repeat</span>
+          <span>Shuffle</span> |
+          <span>Repeat</span> |
           <span>Empty</span>
         </div>
-				<ul class="tracks">
-					<li ng-repeat="track in tracks">
-						<span class="artist">{{track.artist}}</span> - <span class="title">{{track.title}}</span>
-					</li>
-				</ul>
+
 	  	</div>
 
   	</div><!-- #player -->
 
-    <div id="browser"></div>
+    <div id="browser">
+      <table>
+        <tr>
+          <th class="filename">Filename</td>
+          <th class="artist">Artist</td>
+          <th class="title">Title</td>
+          <th class="add-to-pl"></td>
+          <th class="play"></td>
+        </tr>
+        <tr ng-repeat="file in filelist">
+          <td class="filename">{{file.uri | extractFileName}}</td>
+          <td class="artist">{{file.artist}}</td>
+          <td class="title">{{file.title}}</td>
+          <td class="add-to-pl">[+]</td>
+          <td class="play">[>]</td>
+        </tr>
+      </table>
+    </div>
 
   	<script src="lib/lodash.js"></script>
     <script src="lib/angular.js"></script>
     <script src="lib/ui-bootstrap-tpls-0.10.0.js"></script>
   	
-	  <script src="js/player-app/app.js"></script>
-	  <script src="js/player-app/controllers.js"></script>  	
+	  <script src="js/lib/Player.js"></script>
+    <script src="js/player-app/app.js"></script>
+	  <script src="js/player-app/controllers.js"></script>
+    <script src="js/player-app/services.js"></script>
+    <script src="js/player-app/filters.js"></script>
   </body>
 </html>
 
