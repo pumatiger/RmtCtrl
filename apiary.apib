@@ -1,0 +1,71 @@
+FORMAT: 1A
+HOST: http://www.google.com
+
+# RmtCtrl
+RmtCtrl API provides remote control functionality to a server-side audio player.
+
+## Check player status [/status]
+### Retrieve current status [GET]
++ Response 200 (application/json)
+
+        { "status": "initialized" }
+
+## Player control - load [/load]
+### Load an audio file [POST]
++ Request (application/json)
+
+        { "authKey": 93216429521, "fileID": 123 }
+
++ Response 201 (application/json)
+
+        { "fileID": 123, "status": "ready" }
+        
+## Player control - play [/play]        
+### Play currently loaded audio file [POST]
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "fileID": 123, "status": "playback" }
+
+## Player control - pause [/pause]        
+### Pause playback [POST]
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "fileID": 123, "status": "pause", "timeStamp": 143000 }
+
+## Player control - stop [/stop]        
+### Pause playback [POST]
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "fileID": 123, "status": "ready", "timeStamp": 143000 }
+
+## Status [/notes/{id}]
+A single Note object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+
+### Retrieve current status [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a Note [DELETE]
++ Response 204
