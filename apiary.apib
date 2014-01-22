@@ -12,60 +12,67 @@ RmtCtrl API provides remote control functionality to a server-side audio player.
 
 ## Player control - load [/load]
 ### Load an audio file [POST]
+Expects authorization key and file ID
+Returns file ID of loaded track and status:
+ ready when operation successful
+ error when an error occurred
+
 + Request (application/json)
 
-        { "authKey": 93216429521, "fileID": 123 }
+        { "authKey": 93216429521, "fileID": 1 }
 
 + Response 201 (application/json)
 
-        { "fileID": 123, "status": "ready" }
+        { "fileID": 1, "status": "ready" }
         
 ## Player control - play [/play]        
 ### Play currently loaded audio file [POST]
+Expects authorization key
+Returns status ()
+
 + Request (application/json)
 
         { "authKey": 93216429521 }
 
 + Response 201 (application/json)
 
-        { "fileID": 123, "status": "playback" }
+        { "status": "playback" }
 
 ## Player control - pause [/pause]        
 ### Pause playback [POST]
+Expects authorization key
+Returns status
+
 + Request (application/json)
 
         { "authKey": 93216429521 }
 
 + Response 201 (application/json)
 
-        { "fileID": 123, "status": "pause", "timeStamp": 143000 }
+        { "status": "pause", "timeStamp": 143000 }
 
 ## Player control - stop [/stop]        
 ### Pause playback [POST]
+Expects authorization key
+Returns status
+
 + Request (application/json)
 
         { "authKey": 93216429521 }
 
 + Response 201 (application/json)
 
-        { "fileID": 123, "status": "ready", "timeStamp": 143000 }
+        { "status": "ready" }
+        
+## Player control - next [/next]        
+### Pause playback [POST]
+Expects authorization key
+Returns status
 
-## Status [/notes/{id}]
-A single Note object with all its details
++ Request (application/json)
 
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+        { "authKey": 93216429521 }
 
-### Retrieve current status [GET]
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
-+ Response 204
+        { "status": "playback|ready" }        
