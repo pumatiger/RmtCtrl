@@ -63,7 +63,7 @@ _error_ when pause failed
         { "status": "pause", "timeStamp": 143000 }
 
 ## Player control - stop [/stop]        
-### Pause playback [POST]
+### Stop playback and rewind [POST]
 Expects authorization key {Number}  
 Returns status {String}:  
 _ready_ when operation successful  
@@ -78,7 +78,7 @@ _error_ when stop failed
         { "status": "ready" }
         
 ## Player control - next [/next]        
-### Pause playback [POST]
+### Jump to next item in playlist [POST]
 Expects authorization key {Number}  
 Returns status {String}:  
 _playback_ when operation successful and previous status was _playback_  
@@ -94,7 +94,7 @@ _error_ when next failed
         { "status": "playback" }
         
 ## Player control - previous [/previous]        
-### Pause playback [POST]
+### Jump to previous item in playlist [POST]
 Expects authorization key {Number}  
 Returns status {String}:  
 _playback_ when operation successful and previous status was _playback_  
