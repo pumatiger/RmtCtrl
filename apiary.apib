@@ -1,0 +1,273 @@
+FORMAT: 1A
+HOST: http://www.google.com
+
+# RmtCtrl
+RmtCtrl API provides remote control functionality to a server-side audio player.  
+Find documentation at http://docs.rmtctrl.apiary.io/
+
+## Check player status [/status]
+### Retrieve current status [GET]
+Returns current status {String}:  
+_initialized_ when no track is loaded  
+_ready_ when track is loaded  
+_playback_ when track is playing  
+_pause_ when track is paused  
+_error_ when error occurred
+
++ Response 200 (application/json)
+
+        { "status": "initialized" }
+
+## Player control - load [/load]
+### Load an audio file [POST]
+Expects authorization key {Number} and file ID {Number}  
+Returns file ID {Number} of loaded track and status {String}:  
+_ready_ when operation successful  
+_error_ when loading failed
+
++ Request (application/json)
+
+        { "authKey": 93216429521, "fileID": 1 }
+
++ Response 201 (application/json)
+
+        { "fileID": 1, "status": "ready" }
+        
+## Player control - play [/play]        
+### Play currently loaded audio file [POST]
+Expects authorization key {Number}  
+Returns status {String}:  
+_playback_ when operation successful  
+_error_ when playback failed
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "status": "playback" }
+
+## Player control - pause [/pause]        
+### Pause playback [POST]
+Expects authorization key {Number}  
+Returns status {String}:  
+_pause_ when operation successful  
+_error_ when pause failed
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "status": "pause", "timeStamp": 143000 }
+
+## Player control - stop [/stop]        
+### Stop playback and rewind [POST]
+Expects authorization key {Number}  
+Returns status {String}:  
+_ready_ when operation successful  
+_error_ when stop failed
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "status": "ready" }
+        
+## Player control - next [/next]        
+### Jump to next item in playlist [POST]
+Expects authorization key {Number}  
+Returns status {String}:  
+_playback_ when operation successful and previous status was _playback_  
+_ready_ when operation successful and previous status was _ready_ or end of playlist reached while repeat off  
+_error_ when next failed
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "status": "playback" }
+        
+## Player control - previous [/previous]        
+### Jump to previous item in playlist [POST]
+Expects authorization key {Number}  
+Returns status {String}:  
+_playback_ when operation successful and previous status was _playback_  
+_ready_ when operation successful and previous status was _ready_  
+_error_ when previous failed
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+
++ Response 201 (application/json)
+
+        { "status": "playback" }
+
+## Player control - option [/option/{option}]
+### Toggle option [POST]
+Accepted routes:  
+_/option/shuffle_ Toggles shuffle  
+_/option/repeat_ Toggles repeat  
+_/option/mute_ Toggles mute  
+Expects authorization key {Number}  
+Returns affected option key {String}:  
+_shuffle_ | _repeat_ | _mute_  
+and updated option value {Boolean}:  
+_true_ | _false_
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+        
++ Response 201 (application/json)
+
+        { "option": "repeat", "value": true }
+
+## Get playlist [/playlist/get]
+### Receive current playlist [POST]
+Expects authorization key {Number}  
+Returns playlist {Array}
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+        
++ Response 201 (application/json)
+
+        [
+            {
+                "artist": "Gnarls Barkley",
+                "title": "Crazy",
+                "fileName": "Gnarls Barkley - Crazy [from the basement].mp3",
+                "length": 300000,
+                "ID": 1
+            },{
+                "artist": "Chet Faker",
+                "title": "Archangel",
+                "fileName": "01 Archangel.mp3",
+                "length": 320000,
+                "ID": 2
+            },{
+                "artist": "Brightblack Morning Light",
+                "title": "Hologram Buffalo",
+                "fileName": "Brightblack Morning Light - Hologram Buffalo.mp3",
+                "length": 318000,
+                "ID": 3
+            },{
+                "artist": "Jichael Mackson",
+                "title": "Gedöns",
+                "fileName": "JICHAEL MACKSON - A_Gedöns.mp3",
+                "length": 879000,
+                "ID": 4
+            },{
+                "artist": "Mazzy Star",
+                "title": "Into Dust",
+                "fileName": "Mazzy Star - Into Dust.mp3",
+                "length": 336000,
+                "ID": 5
+            }
+        ]
+
+## Playlist control - add [/playlist/add]
+### Add item(s) to playlist [POST]
+Expects authorization key {Number} and fileIDs {Array}  
+Returns updated playlist {Array}
+
++ Request (application/json)
+
+        { "authKey": 93216429521, "fileIDs": [6] }
+        
++ Response 201 (application/json)
+
+        [
+            {
+                "artist": "Gnarls Barkley",
+                "title": "Crazy",
+                "fileName": "Gnarls Barkley - Crazy [from the basement].mp3",
+                "length": 300000,
+                "ID": 1
+            },{
+                "artist": "Chet Faker",
+                "title": "Archangel",
+                "fileName": "01 Archangel.mp3",
+                "length": 320000,
+                "ID": 2
+            },{
+                "artist": "Brightblack Morning Light",
+                "title": "Hologram Buffalo",
+                "fileName": "Brightblack Morning Light - Hologram Buffalo.mp3",
+                "length": 318000,
+                "ID": 3
+            },{
+                "artist": "Jichael Mackson",
+                "title": "Gedöns",
+                "fileName": "JICHAEL MACKSON - A_Gedöns.mp3",
+                "length": 879000,
+                "ID": 4
+            },{
+                "artist": "Mazzy Star",
+                "title": "Into Dust",
+                "fileName": "Mazzy Star - Into Dust.mp3",
+                "length": 336000,
+                "ID": 5
+            },{
+                "artist": "Moderat",
+                "title": "Rusty Nails",
+                "fileName": "Moderat - Rusty Nails.mp3",
+                "length": 344000,
+                "ID": 6
+            }
+        ]
+
+## Playlist control - remove [/playlist/remove]
+### Remove item(s) from playlist [POST]
+Expects authorization key {Number} and fileIDs {Array}  
+Returns updated playlist {Array}
+
++ Request (application/json)
+
+        { "authKey": 93216429521, "fileIDs": [2,4] }
+        
++ Response 201 (application/json)
+
+        [
+            {
+                "artist": "Gnarls Barkley",
+                "title": "Crazy",
+                "fileName": "Gnarls Barkley - Crazy [from the basement].mp3",
+                "length": 300000,
+                "ID": 1
+            },{
+                "artist": "Brightblack Morning Light",
+                "title": "Hologram Buffalo",
+                "fileName": "Brightblack Morning Light - Hologram Buffalo.mp3",
+                "length": 318000,
+                "ID": 3
+            },{
+                "artist": "Mazzy Star",
+                "title": "Into Dust",
+                "fileName": "Mazzy Star - Into Dust.mp3",
+                "length": 336000,
+                "ID": 5
+            }
+        ]       
+
+## Playlist control - empty [/playlist/empty]
+### Empty playlist [POST]
+Expects authorization key {Number}  
+Returns updated playlist {Array}
+
++ Request (application/json)
+
+        { "authKey": 93216429521 }
+        
++ Response 201 (application/json)
+
+        []       
