@@ -2,9 +2,9 @@
 
 /* Filters */
 
-var playerFilters = angular.module('playerFilters', []);
+var rmtCtrlFilters = angular.module('rmtCtrlFilters', []);
 
-playerFilters.filter('extractFileName', function() {
+rmtCtrlFilters.filter('extractFileName', function() {
 
     return function(fileRef) {
         return fileRef.replace(/.*[\/\\](.+\.\w{3,4}$)/, '$1');

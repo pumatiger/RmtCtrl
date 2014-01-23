@@ -2,9 +2,9 @@
 
 /* App Module */
 
-var playerApp = angular.module('playerApp', [
+var rmtCtrlApp = angular.module('rmtCtrlApp', [
     'ui.bootstrap',
-    'playerControllers',
-    'playerServices',
-    'playerFilters'
+    'rmtCtrlControllers',
+    'rmtCtrlServices',
+    'rmtCtrlFilters'
 ]);

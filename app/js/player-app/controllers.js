@@ -2,16 +2,19 @@
 
 /* Controllers */
 
-var playerControllers = angular.module('playerControllers', []);
+var rmtCtrlControllers = angular.module('rmtCtrlControllers', []);
 
-playerControllers.controller('playerCtrl', ['$scope', '$http', 'Player',
-    function($scope, $http, player) {
+rmtCtrlControllers.controller('playerCtrl', ['$scope', '$http', 'Player', 'Playlist',
+    function($scope, $http, player, playlist) {
 
-        player.playlist.get(function(playlist) {
-            console.log(playlist);
-            $scope.playlist = playlist;
-            $scope.$apply();
-        }, function() {});
+        var initPlaylist = function() {
+            playlist.get().then(function(data) {
+                $scope.playlist = data;
+            }, function(error) {
+                alert("Loading playlist failed :: " + error);
+            });
+        };
+        initPlaylist();
 
         $http.get('data/tracks.json').success(function(data) {
             $scope.filelist = data;
