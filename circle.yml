@@ -1,0 +1,10 @@
+## Customize dependencies
+dependencies:
+  post:
+    - npm update -g bower
+    - bower install
+
+## Customize test commands
+test:
+  override:
+    - grunt test # use Grunt test for testing
