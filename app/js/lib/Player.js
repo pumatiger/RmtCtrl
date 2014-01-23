@@ -68,10 +68,11 @@ RMTCTRL.Player.prototype.load = function(fileRef) {
  */
 RMTCTRL.Player.prototype.play = function() {
     if (this.status != 'playback') {
-
+        // start playback
+        this.status = 'playback';
+    } else {
+        throw new Error('Player is already playing');
     }
-    // start playback
-    this.status = 'playback';
 };
 
 /**
@@ -144,10 +145,21 @@ RMTCTRL.Playlist = function() {
 /**
  * return all items in playlist
  *
- * @return {Array}
+ * @param {function} success
+ * @param {function} error
  */
-RMTCTRL.Playlist.prototype.getItems = function() {
-    return this.items;
+RMTCTRL.Playlist.prototype.get = function(success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://rmtctrl.apiary.io/playlist/get');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            success(JSON.parse(this.responseText));
+        } else {
+            error('bla');
+        }
+    };
+    xhr.send('{ "authKey": 93216429521 }');
 };
 
 /**

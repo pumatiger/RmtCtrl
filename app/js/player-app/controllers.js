@@ -5,10 +5,17 @@
 var playerControllers = angular.module('playerControllers', []);
 
 playerControllers.controller('playerCtrl', ['$scope', '$http', 'Player',
-  function($scope, $http) {
+    function($scope, $http, player) {
 
-    $http.get('data/tracks.json').success(function(data) {
-      $scope.filelist = data;
-    });
+        player.playlist.get(function(playlist) {
+            console.log(playlist);
+            $scope.playlist = playlist;
+            $scope.$apply();
+        }, function() {});
 
-  }]);
+        $http.get('data/tracks.json').success(function(data) {
+            $scope.filelist = data;
+        });
+
+    }
+]);

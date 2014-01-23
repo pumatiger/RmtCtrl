@@ -18,7 +18,7 @@ describe('player app', function() {
         expect(player.playlist.getItems().length).toEqual(0);
     });
 
-    xit('should instantiate a FileBrowser object', function() {
+    it('should instantiate a FileBrowser object', function() {
         expect(player.fileBrowser).toBeDefined();
     });
 
@@ -52,6 +52,12 @@ describe('player app', function() {
                 expect(player.getStatus()).toBe('ready');
             });
 
+            it('should throw an error if play method is called when player is already playing', function() {
+                expect(function() {
+                    player.play();
+                }).toThrow("Player is already playing");
+            });
+
         });
 
     });
@@ -59,7 +65,7 @@ describe('player app', function() {
     it('should set volume to 0 when mute method is called', function() {
         player.mute();
         expect(player.getVolume()).toEqual(0);
-    });    
+    });
 
     it('should toggle shuffle option when toggleShuffle method is called', function() {
         var shuffleOpt = player.getOption('shuffle');
@@ -92,7 +98,7 @@ describe('player app', function() {
 
     });
 
-    xdescribe('when a file list is loaded into FileBrowser', function() {
+    describe('when a file list is loaded into FileBrowser', function() {
 
         beforeEach(function() {
             player.fileBrowser.load();
@@ -103,9 +109,17 @@ describe('player app', function() {
         });
 
         it('is supposed to add a file to the playlist when the enqueue method is invoked on an item in the fileBrowser', function() {
-            player.fileBrowser.getItems()[2].enqueue();
-            expect(_.last(player.playlist.getItems())).toBe('');
+            player.fileBrowser.getItem(2).enqueue();
+            expect(_.last(player.playlist.getItems())).toBe(player.fileBrowser.getItemFileRef(2));
         });
+
+        it('is supposed to add a file to the playlist and start playback when the enqueueAndPlay method is invoked on an item in the fileBrowser',
+            function() {
+                player.fileBrowser.getItem(3).enqueueAndPlay();
+                expect(_.last(player.playlist.getItems())).toBe(player.fileBrowser.getItemFileRef(3));
+                expect(player.getStatus()).toBe('playback');
+            }
+        );
 
     });
 
