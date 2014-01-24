@@ -4,7 +4,7 @@
 
 var rmtCtrlServices = angular.module('rmtCtrlServices', []);
 
-rmtCtrlServices.factory('Player', [$http, $q,
+rmtCtrlServices.factory('Player', ['$http', '$q',
     function($http, $q) {
         return {
             load: function() {}

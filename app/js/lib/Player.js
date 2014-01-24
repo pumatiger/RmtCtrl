@@ -25,7 +25,6 @@ RMTCTRL.init = {
  * @this {Playlist} playlist
  */
 RMTCTRL.Player = function() {
-    console.log('Player :: Constructor called');
     this.status = RMTCTRL.init.status;
     this.volume = RMTCTRL.init.volume;
     this.options = RMTCTRL.init.options;
@@ -38,7 +37,6 @@ RMTCTRL.Player = function() {
  * @return {String}
  */
 RMTCTRL.Player.prototype.getStatus = function() {
-    console.log('Player :: getStatus called');
     return this.status;
 };
 
